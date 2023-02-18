@@ -3,11 +3,22 @@
     2) npm i express
     3) touch index.js
  */
+/*
+add a Bootstrap
+    1) mkdir public
+    2) mkdir public/css public/js
+    3) download https://getbootstrap.com/docs/4.0/getting-started/download/
+    4) copy dowload to respectives directories
+    5) add app.use(express.static(path.join(__dirname, 'public'))); in index.js
+    6) download jquery and pasted in public/js
+*/
 
 const express = require('express');
 const app = express();
 const path = require('path');
 
+
+app.use(express.static(path.join(__dirname, 'public')));
 /*
     Have to install EJS: npm i ejs
     After, create a directory called "views': mkdir views
@@ -42,6 +53,6 @@ app.get('/rand', (req, res)=>{
     res.render('random', {passingRandomNumber: num});//I did't add ".ejs" because now I add a path.join as you can see on top
 })
 
-app.listen(1111, ()=>{
-    console.log("Listening on port 1111");
+app.listen(5555, ()=>{
+    console.log("Listening on port 5555");
 })
