@@ -22,6 +22,26 @@ app.get('/', (req, res)=>{
     res.render('home.ejs');
 })
 
-app.listen(9999, ()=>{
-    console.log("Listening on port 9999");
+app.get('/names', (req, res)=>{
+    const names = ['Vincius', 'Paula', 'Steve', 'Vanessa'];
+    res.render('names.ejs', {listName : names});
+})
+
+
+app.get('/r/:subreddit', (req, res)=>{
+    const {subreddit} = req.params;
+    res.render('subreddit', {subreddit});
+})
+
+app.get('/rand', (req, res)=>{
+    const num  = Math.floor((Math.random()*10) + 1);//create num for a random number
+    /*
+        on render #1 arg is file name
+                  #2 arg is a object that I can pass here, so I can use on my random.ejs
+    */
+    res.render('random', {passingRandomNumber: num});//I did't add ".ejs" because now I add a path.join as you can see on top
+})
+
+app.listen(1111, ()=>{
+    console.log("Listening on port 1111");
 })
